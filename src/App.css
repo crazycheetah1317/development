@@ -1,5 +1,20 @@
 .App {
   text-align: center;
+  background-color: #EEECE7;
+  min-height: 100vh;
+  /* display: flex;
+  flex-direction: column; */
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  overflow-y: auto;
+}
+
+.App-div {
+  background-color: #EEECE7;
+  /* height: 100vh; */
+  width: 100%;
+  border: 4px solid black;
 }
 
 .App-logo {
@@ -7,32 +22,57 @@
   pointer-events: none;
 }
 
+.Main-grid {
+  height: 100%;
+  width: 100%;
+  background-color: red;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.Side-grid {
+  height: 100%;
+  width: 25%;
+  display: flex;
+  background-color: green;
+  flex-direction: column;
+}
+
+.Side-grid > div {
+  border: 2px solid red;
+  margin: 1.5rem;
+}
+
+.Filter-grid {
+  height: 66%;
+}
+
+.Select {
+  border: none;
+}
+
+.Total-grid {
+  height: 34%;
+}
+
+.Items-grid {
+  height: 100%;
+  width: 75%;
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+  background-color: blue;
+  /* margin: 2rem; */
+}
+
+.Item {
+  border: 2px purple solid;
+  margin: 1rem;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
   }
 }
