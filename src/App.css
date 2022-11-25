@@ -1,7 +1,16 @@
+:root {
+  margin: 0;
+  padding: 0;
+  --background-color: #EEECE7;
+  --item-box-color: rgba(134, 175, 233, 0.25);
+  --text-color: #462D1B;
+  scroll-behavior: smooth;
+}
+
 .App {
   text-align: center;
-  background-color: #EEECE7;
-  min-height: 100vh;
+  background-color: var(--background-color);
+  /* min-height: 100vh; */
   /* display: flex;
   flex-direction: column; */
   align-items: center;
@@ -11,10 +20,9 @@
 }
 
 .App-div {
-  background-color: #EEECE7;
+  background-color: var(--background-color);
   /* height: 100vh; */
   width: 100%;
-  border: 4px solid black;
 }
 
 .App-logo {
@@ -22,13 +30,20 @@
   pointer-events: none;
 }
 
+.Header-grid {
+  margin: 2rem;
+  text-align: left;
+  font-size: 3rem;
+  font-weight: 600;
+}
+
 .Main-grid {
   height: 100%;
   width: 100%;
-  background-color: red;
+  /* background-color: red; */
   display: flex;
   flex-direction: row;
-  align-items: center;
+  /* align-items: center; */
   justify-content: center;
 }
 
@@ -36,13 +51,14 @@
   height: 100%;
   width: 25%;
   display: flex;
-  background-color: green;
+  /* border: 2px green solid; */
   flex-direction: column;
 }
 
 .Side-grid > div {
   border: 2px solid red;
   margin: 1.5rem;
+  min-height: 100%;
 }
 
 .Filter-grid {
@@ -59,15 +75,16 @@
 
 .Items-grid {
   height: 100%;
-  width: 75%;
+  width: 90%;
   display: grid;
   grid-template-columns: 33% 33% 33%;
-  background-color: blue;
+  /* background-color: blue; */
   /* margin: 2rem; */
 }
 
-.Item {
-  border: 2px purple solid;
+.TravelItem {
+  background-color: var(--item-box-color);
+  border-radius: 12px;
   margin: 1rem;
 }
 

@@ -1,0 +1,86 @@
+[
+    {
+      "name": "London, England",
+      "package": "Tours and Activities Bundle",
+      "price": 10000,
+      "people": 4,
+      "image": "images/london.jpeg"
+    },
+    {
+      "name": "Cancun, Mexico",
+      "package": "All-Inclusive",
+      "price": 10000,
+      "people": 6,
+      "image": "images/cancun.jpeg"
+    },
+    {
+      "name": "Bali, Indonesia",
+      "package": "All-Inclusive",
+      "price": 11000,
+      "people": 3,
+      "image": "images/bali.jpeg"
+    },
+    {
+      "name": "Rio de Janeiro, Brazil",
+      "package": "Tours and Activities Bundle",
+      "price": 8000,
+      "people": 4,
+      "image": "images/rio.jpeg"
+    },
+    {
+      "name": "Paris, France",
+      "package": "Tours and Activities Bundle",
+      "price": 12000,
+      "people": 3,
+      "image": "images/paris.jpeg"
+    },
+    {
+      "name": "Tokyo, Japan",
+      "package": "Tours and Activities Bundle",
+      "price": 10000,
+      "people": 4,
+      "image": "images/tokyo.webp" 
+    },
+    {
+      "name": "Santorini, Greece",
+      "package": "Timeshare Promotion",
+      "price": 22000,
+      "people": 6,
+      "image": "images/santorini.jpeg"
+    },
+    {
+      "name": "Casablanca, Morocco",
+      "package": "Timeshare Promotion",
+      "price": 8000,
+      "people": 4,
+      "image": "images/casablanca.jpeg"
+    },
+    {
+      "name": "Vancouver, Canada",
+      "package": "Tours and Activities Bundle",
+      "price": 12000,
+      "people": 5,
+      "image": "images/vancouver.jpeg"
+    },
+    {
+      "name": "Budapest, Hungary",
+      "package": "Tours and Activities Bundle",
+      "price": 12000,
+      "people": 4,
+      "image": "images/budapest.jpeg"
+    },
+    {
+      "name": "Busan, South Korea",
+      "package": "Tours and Activities Bundle",
+      "price": 11000,
+      "people": 3,
+      "image": "images/busan.jpeg"
+    },
+    {
+      "name": "Lima, Peru",
+      "package": "Timeshare Promotion",
+      "price": 12000,
+      "people": 5,
+      "image": "images/lima.jpeg"
+    }
+  ]
