@@ -4,6 +4,7 @@
       "package": "Tours and Activities Bundle",
       "price": 10000,
       "people": 4,
+      "continent": "Europe",
       "image": "images/london.jpeg"
     },
     {
@@ -11,6 +12,7 @@
       "package": "All-Inclusive",
       "price": 10000,
       "people": 6,
+      "continent": "North America",
       "image": "images/cancun.jpeg"
     },
     {
@@ -18,6 +20,7 @@
       "package": "All-Inclusive",
       "price": 11000,
       "people": 3,
+      "continent": "Asia",
       "image": "images/bali.jpeg"
     },
     {
@@ -25,6 +28,7 @@
       "package": "Tours and Activities Bundle",
       "price": 8000,
       "people": 4,
+      "continent": "South American",
       "image": "images/rio.jpeg"
     },
     {
@@ -32,6 +36,7 @@
       "package": "Tours and Activities Bundle",
       "price": 12000,
       "people": 3,
+      "continent": "Europe",
       "image": "images/paris.jpeg"
     },
     {
@@ -39,6 +44,7 @@
       "package": "Tours and Activities Bundle",
       "price": 10000,
       "people": 4,
+      "continent": "Asia",
       "image": "images/tokyo.webp" 
     },
     {
@@ -46,6 +52,7 @@
       "package": "Timeshare Promotion",
       "price": 22000,
       "people": 6,
+      "continent": "Europe",
       "image": "images/santorini.jpeg"
     },
     {
@@ -53,6 +60,7 @@
       "package": "Timeshare Promotion",
       "price": 8000,
       "people": 4,
+      "continent": "Africa",
       "image": "images/casablanca.jpeg"
     },
     {
@@ -60,6 +68,7 @@
       "package": "Tours and Activities Bundle",
       "price": 12000,
       "people": 5,
+      "contient": "North America",
       "image": "images/vancouver.jpeg"
     },
     {
@@ -67,6 +76,7 @@
       "package": "Tours and Activities Bundle",
       "price": 12000,
       "people": 4,
+      "continent": "Europe",
       "image": "images/budapest.jpeg"
     },
     {
@@ -74,6 +84,7 @@
       "package": "Tours and Activities Bundle",
       "price": 11000,
       "people": 3,
+      "continent": "Asia",
       "image": "images/busan.jpeg"
     },
     {
@@ -81,6 +92,7 @@
       "package": "Timeshare Promotion",
       "price": 12000,
       "people": 5,
+      "contient": "South America",
       "image": "images/lima.jpeg"
     }
   ]

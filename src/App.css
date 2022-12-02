@@ -4,6 +4,7 @@
   --background-color: #EEECE7;
   --item-box-color: rgba(134, 175, 233, 0.25);
   --text-color: #462D1B;
+  --side-color: rgba(101, 145, 87, 0.25);
   scroll-behavior: smooth;
 }
 
@@ -56,13 +57,19 @@
 }
 
 .Side-grid > div {
-  border: 2px solid red;
+  border-radius: 12px;
+  background-color: var(--side-color);
   margin: 1.5rem;
   min-height: 100%;
 }
 
 .Filter-grid {
   height: 66%;
+}
+
+.Sort-radios {
+  align-items: left;
+  justify-content: left;
 }
 
 .Select {
