@@ -1,27 +1,6 @@
 import "./TravelItem.css";
 
 function TravelItem(props) {
-
-    const clickHandler = event => {
-        switch (event.detail) {
-          case 1: {
-            console.log("single click")
-            break
-          }
-          case 2: {
-            console.log("double click")
-            break
-          }
-          case 3: {
-            console.log("triple click")
-            break
-          }
-          default: {
-            break
-          }
-        }
-    }
-    
     return (
         <div className="TravelItem" >
             <div>
@@ -45,11 +24,8 @@ function TravelItem(props) {
 
                         <button onClick={() => {props.removeFromCart(props.item)}}>-</button>
                     </div>
-                    
                 </div>
-
             </div>
-        
         </div>
     )
 }
