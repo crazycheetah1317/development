@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import { useState } from "react";
 import travelData from "./assets/travel-data.json";
@@ -8,14 +7,10 @@ travelData.forEach((item) => {
   item.image = process.env.PUBLIC_URL + "/" + item.image;
 });
 
-function App(props) {
+function App() {
   const [travelItems, setTravelItems] = useState(travelData) // item is an array; setItems is a function
 
   const [cartItems, setCartItems] = useState([])
-
-  // travelData.forEach((item) => {
-  //   setTravelItems([...travelItems], item);
-  // });
 
   function addToCart(item) {
     setCartItems([...cartItems, item])
@@ -36,45 +31,33 @@ function App(props) {
   }
 
   function setOrderPrice() {
-    const sortedData = [...travelItems].sort((a, b) => a.price - b.price);
+    const copy = [...travelItems];
+    const sortedData = copy.sort((a, b) => a.price - b.price);
     setTravelItems(sortedData);
-    // console.log(sortedData);
-    // console.log(travelItems);
-
-    // setTravelItems(prevState =>
-    //   [...travelItems].sort((a, b) => a.price - b.price)
-    // );
-    // console.log(travelItems);
   }
 
   function setOrderPeople() {
-    const sortedData = travelItems.sort((a, b) => a.people - b.people);
-    setTravelItems([...sortedData]);
-    // console.log(travelItems);
+    const copy = [...travelItems];
+    const sortedData = copy.sort((a, b) => a.people - b.people);
+    setTravelItems(sortedData);
   }
 
-  // const [type, setType] = useState(item.package); // filtering for packae
+  const [type, setType] = useState("All");
 
-  // function selectFilterType() {
-  //   selectFilterType = eventKey => {
-  //     setType(eventKey);
-  //   };  
-  // }
+  function handleFilterPackage(event) { // value is All Inclusive, Africa, Asia, etc
+    var new_type = event.target.value;
+    console.log(new_type);
 
-  const [type, setType] = useState("Tours and Activities Bundle");
+    setType(new_type);
+    console.log(type);
 
-  const handleFilter = event => { // value is All Inclusive, Africa, Asia, etc
-    // console.log(event.target.value);
-    setType(event.target.value);
-    // console.log(type);
-
-    const filteredData = [...travelItems].filter(matchesFilterType);
+    const filteredData = [...travelItems].filter(matchesFilterPackage);
     setTravelItems([...filteredData]);
-    console.log(filteredData);
+    // console.log(filteredData);
   };
   
 
-  const matchesFilterType = item => {
+  const matchesFilterPackage = item => {
     // console.log(travelItem.type);
     // all items should be shown when no filter is selected
 
@@ -82,6 +65,30 @@ function App(props) {
       return true
     } 
     else if (type == item.package) {
+      return true
+    } 
+    else {
+      return false
+    }
+  }
+
+  function handleFilterCont(event){ // value is All Inclusive, Africa, Asia, etc
+    var new_type = event.target.value
+    setType(new_type);
+
+    const filteredData = [...travelItems].filter(matchesFilterCont);
+    setTravelItems([...filteredData]);
+  };
+  
+
+  const matchesFilterCont = item => {
+    // console.log(travelItem.type);
+    // all items should be shown when no filter is selected
+
+    if(type == "All") { 
+      return true
+    } 
+    else if (type == item.continent) {
       return true
     } 
     else {
@@ -134,30 +141,30 @@ function App(props) {
               <h3>Package Deals</h3>
               <label className="Labels">
                 <div>
-                  <input type="checkbox" filter="package" value="All-Inclusive" onChange={handleFilter}/> All-Inclusive
+                  <input type="radio" value="All-Inclusive" name="filter" onChange={handleFilterPackage}/> All-Inclusive
                 </div>
                 <div>
-                  <input type="checkbox" filter="package" value="Tours and Activities Bundle" onChange={handleFilter}/> Tours and Activities Bundle
+                  <input type="radio" value="Tours and Activities Bundle" name="filter" onChange={handleFilterPackage}/> Tours and Activities Bundle
                 </div>
                 <div>
-                  <input type="checkbox" filter="package" value="Timeshare Promotion" onChange={handleFilter}/> Timeshare Promotion
+                  <input type="radio" value="Timeshare Promotion" name="filter"  onChange={handleFilterPackage}/> Timeshare Promotion
                 </div>
               
                 <h3>Continent</h3>
                 <div>
-                  <input type="checkbox" filter="continent" value="Africa" onChange={handleFilter}/> Africa
+                  <input type="radio" value="Africa" name="filter2" onChange={handleFilterCont}/> Africa
                 </div>
                 <div>
-                  <input type="checkbox" filter="continent" value="Asia" onChange={handleFilter}/> Asia
+                  <input type="radio" value="Asia" name="filter2" onChange={handleFilterCont}/> Asia
                 </div>
                 <div>
-                  <input type="checkbox" filter="continent" value="Europe" onChange={handleFilter}/> Europe
+                  <input type="radio" value="Europe" name="filter2" onChange={handleFilterCont}/> Europe
                 </div>
                 <div>
-                  <input type="checkbox" filter="continent" value="North America" onChange={handleFilter}/> North America
+                  <input type="radio" value="North America" name="filter2" onChange={handleFilterCont}/> North America
                 </div>
                 <div>
-                  <input type="checkbox" filter="continent" value="South America" onChange={handleFilter}/> South America
+                  <input type="radio" value="South America" name="filter2" onChange={handleFilterCont}/> South America
                 </div>
               </label>
 
@@ -171,8 +178,7 @@ function App(props) {
           </div>
 
           <div className="Items-grid" >
-              
-              {travelData.map((item, index) => (
+              {travelItems.map((item, index) => (
                   <TravelItem item={item} addToCart={addToCart} removeFromCart={removeFromCart} 
                   setCartItems={setCartItems} cartItems={cartItems}/>
                 ))}   
