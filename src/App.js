@@ -36,8 +36,8 @@ function App(props) {
   }
 
   function setOrderPrice() {
-    const sortedData = travelItems.sort((a, b) => a.price - b.price);
-    setTravelItems([...sortedData]);
+    const sortedData = [...travelItems].sort((a, b) => a.price - b.price);
+    setTravelItems(sortedData);
     // console.log(sortedData);
     // console.log(travelItems);
 
