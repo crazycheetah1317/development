@@ -1,5 +1,5 @@
 import './App.css';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import travelData from "./assets/travel-data.json";
 import TravelItem from "./components/TravelItem";
 
@@ -10,6 +10,7 @@ travelData.forEach((item) => {
 function App() {
   const [travelItems, setTravelItems] = useState(travelData) // item is an array; setItems is a function
 
+  // Cart
   const [cartItems, setCartItems] = useState([])
 
   function addToCart(item) {
@@ -30,41 +31,51 @@ function App() {
     return total;
   }
 
+  // Sorting 
+
+  const [sortedData, setSortedData] = useState([...travelItems]);
+
   function setOrderPrice() {
-    const copy = [...travelItems];
-    const sortedData = copy.sort((a, b) => a.price - b.price);
+    // const copy = [...travelItems];
+    // const sortedData = copy.sort((a, b) => a.price - b.price);
+    sortedData.sort((a, b) => a.price - b.price);
+    setSortedData([...sortedData]);
     setTravelItems(sortedData);
+    // console.log(travelItems);
   }
 
   function setOrderPeople() {
-    const copy = [...travelItems];
-    const sortedData = copy.sort((a, b) => a.people - b.people);
+    // const copy = [...travelItems];
+    // const sortedData = copy.sort((a, b) => a.people - b.people);
+    sortedData.sort((a, b) => a.people - b.people)
+    setSortedData([...sortedData]);
     setTravelItems(sortedData);
+    // console.log(sortedData);
   }
 
+  // Filtering
   const [type, setType] = useState("All");
+  const [filteredData, setFilteredData] = useState(sortedData);
 
   function handleFilterPackage(event) { // value is All Inclusive, Africa, Asia, etc
     var new_type = event.target.value;
-    console.log(new_type);
 
-    setType(new_type);
-    console.log(type);
+    setType(new_type, matchesFilterPackage);
 
-    const filteredData = [...travelItems].filter(matchesFilterPackage);
-    setTravelItems([...filteredData]);
-    // console.log(filteredData);
+    setTravelItems(filteredData.filter((item) => matchesFilterPackage(item, new_type)));
+    // setFilteredData(filteredData.filter((item) => matchesFilterPackage(item, new_type)));
+    console.log(filteredData);
+    setSortedData(filteredData.filter((item) => matchesFilterPackage(item, new_type)));
+
   };
   
 
-  const matchesFilterPackage = item => {
-    // console.log(travelItem.type);
+  const matchesFilterPackage = (item, updatedType) => {
     // all items should be shown when no filter is selected
-
-    if(type == "All") { 
+    if(updatedType == "All") { 
       return true
     } 
-    else if (type == item.package) {
+    else if (updatedType == item.package) {
       return true
     } 
     else {
@@ -74,46 +85,28 @@ function App() {
 
   function handleFilterCont(event){ // value is All Inclusive, Africa, Asia, etc
     var new_type = event.target.value
-    setType(new_type);
+    setType(new_type, matchesFilterCont);
 
-    const filteredData = [...travelItems].filter(matchesFilterCont);
-    setTravelItems([...filteredData]);
+    console.log(filteredData);
+    setTravelItems([...filteredData].filter((item) => matchesFilterCont(item, new_type)));
+    console.log(filteredData);
+    // setFilteredData([...filteredData].filter((item) => matchesFilterCont(item, new_type)));
+    setSortedData([...filteredData].filter((item) => matchesFilterCont(item, new_type)));
   };
   
-
-  const matchesFilterCont = item => {
-    // console.log(travelItem.type);
+  const matchesFilterCont = (item, updatedType) => {
     // all items should be shown when no filter is selected
 
-    if(type == "All") { 
+    if(updatedType == "All") { 
       return true
     } 
-    else if (type == item.continent) {
+    else if (updatedType == item.continent) {
       return true
     } 
     else {
       return false
     }
   }
-
-  // const handleFilter = (event) => {
-  //   // setChecked(!checked);
-  //   // let copyList = [...travelItems]
-      
-  //   if (event.target.checked) {
-  //     travelItems.filter(item => 
-  //       if(event.value == item.value) {
-
-  //       });
-  //   } 
-  //   // else {
-  //   //   copyList.delete(event.target.type)
-  //   // }
-
-  //   setTravelItems(travelItems);
-  //   console.log(travelItems);
-  // }
-
 
   return (
     <div className="App">
@@ -127,8 +120,8 @@ function App() {
           <div className="Side-grid">
             <div className="Filter-grid">
 
-              <h3>Sort By</h3>
               <label className="Labels">
+                <h3>Sort By</h3>
                 <div>
                   <input type="radio" value="price" name="sort" onChange={setOrderPrice}/> Price
                 </div>
@@ -136,10 +129,9 @@ function App() {
                   <input type="radio" value="people" name="sort" onChange={setOrderPeople}/> Number of Guests
                 </div>
               </label>
-              
-              
-              <h3>Package Deals</h3>
+            
               <label className="Labels">
+                <h3>Package Deals</h3>
                 <div>
                   <input type="radio" value="All-Inclusive" name="filter" onChange={handleFilterPackage}/> All-Inclusive
                 </div>
@@ -167,6 +159,8 @@ function App() {
                   <input type="radio" value="South America" name="filter2" onChange={handleFilterCont}/> South America
                 </div>
               </label>
+
+              <button onClick={() => window.location.reload(false)}>Reset</button>
 
             </div>
 

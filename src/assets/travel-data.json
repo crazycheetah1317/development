@@ -28,7 +28,7 @@
       "package": "Tours and Activities Bundle",
       "price": 8000,
       "people": 4,
-      "continent": "South American",
+      "continent": "South America",
       "image": "images/rio.jpeg"
     },
     {
@@ -68,7 +68,7 @@
       "package": "Tours and Activities Bundle",
       "price": 12000,
       "people": 5,
-      "contient": "North America",
+      "continent": "North America",
       "image": "images/vancouver.jpeg"
     },
     {
