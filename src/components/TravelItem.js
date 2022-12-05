@@ -16,7 +16,7 @@ function TravelItem(props) {
                 <div className="item-bottom">
                     <div className="price-people">
                         <p>Price: ${props.item.price}</p>
-                        <p>Number of People: {props.item.people}</p>
+                        <p>Number of Guests: {props.item.people}</p>
                     </div>
 
                     <div className="cart">

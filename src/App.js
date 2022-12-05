@@ -54,20 +54,72 @@ function App() {
   }
 
   // Filtering
-  const [type, setType] = useState("All");
+  const [packageType, setPackageType] = useState("All");
+  const [contType, setContType] = useState("All");
+
   const [filteredData, setFilteredData] = useState(sortedData);
+  const [filteredData2, setFilteredData2] = useState(sortedData);
 
-  function handleFilterPackage(event) { // value is All Inclusive, Africa, Asia, etc
-    var new_type = event.target.value;
+  function handleFilter(event) {
+    var filter = event.target.name;
+    var data = [];
+    
+    if(filter == "filter") { // package
+      var new_type = event.target.value;
+      setPackageType(new_type, matchesFilterPackage);
 
-    setType(new_type, matchesFilterPackage);
+      data = filteredData2.filter((item) => matchesFilterPackage(item, new_type));
+      // console.log("Package Filter:");
+      // console.log(filteredData2.filter((item) => matchesFilterPackage(item, new_type)))
+      setFilteredData(filteredData2.filter((item) => matchesFilterPackage(item, new_type)));
+      console.log("Package Filter:");
+      console.log(filteredData);
+      
+      setSortedData(filteredData2.filter((item) => matchesFilterPackage(item, new_type)));
+    }
+    else if(filter == "filter2") { // continent
+      var new_type = event.target.value
+      setContType(new_type, matchesFilterCont);
 
-    setTravelItems(filteredData.filter((item) => matchesFilterPackage(item, new_type)));
+      data = filteredData.filter((item) => matchesFilterCont(item, new_type));
+      // console.log("Continent Filter:");
+      // console.log(filteredData.filter((item) => matchesFilterCont(item, new_type)));
+      setFilteredData2(filteredData.filter((item) => matchesFilterCont(item, new_type)));
+      console.log("Continent Filter:");
+      console.log(filteredData2);
+
+      setSortedData(filteredData.filter((item) => matchesFilterCont(item, new_type)));
+    }
+    
+    setTravelItems(data);
+
     // setFilteredData(filteredData.filter((item) => matchesFilterPackage(item, new_type)));
-    console.log(filteredData);
-    setSortedData(filteredData.filter((item) => matchesFilterPackage(item, new_type)));
+    // setFilteredData([...filteredData].filter((item) => matchesFilterCont(item, new_type)));
 
-  };
+    // console.log(travelItems);
+    // setTravelItems(travelItems);
+    // setTravelItems([...filteredData].filter((item) => matchesFilterCont(item, new_type)));
+
+  }
+
+  // function display(data) {
+  //   data = data.filter((item) => matchesFilterPackage(item));
+  //   data = data.filter((item) => matchesFilterCont(item))
+  // }
+  
+
+
+  // function handleFilterPackage(event) { // value is All Inclusive, Africa, Asia, etc
+  //   var new_type = event.target.value;
+
+  //   setType(new_type, matchesFilterPackage);
+
+  //   setTravelItems(filteredData.filter((item) => matchesFilterPackage(item, new_type)));
+  //   // setFilteredData(filteredData.filter((item) => matchesFilterPackage(item, new_type)));
+  //   console.log(filteredData);
+  //   setSortedData(filteredData.filter((item) => matchesFilterPackage(item, new_type)));
+
+  // };
   
 
   const matchesFilterPackage = (item, updatedType) => {
@@ -83,24 +135,24 @@ function App() {
     }
   }
 
-  function handleFilterCont(event){ // value is All Inclusive, Africa, Asia, etc
-    var new_type = event.target.value
-    setType(new_type, matchesFilterCont);
+  // function handleFilterCont(event){ // value is All Inclusive, Africa, Asia, etc
+  //   var new_type = event.target.value
+  //   setType(new_type, matchesFilterCont);
 
-    console.log(filteredData);
-    setTravelItems([...filteredData].filter((item) => matchesFilterCont(item, new_type)));
-    console.log(filteredData);
-    // setFilteredData([...filteredData].filter((item) => matchesFilterCont(item, new_type)));
-    setSortedData([...filteredData].filter((item) => matchesFilterCont(item, new_type)));
-  };
+  //   console.log(filteredData);
+  //   setTravelItems([...filteredData].filter((item) => matchesFilterCont(item, new_type)));
+  //   console.log(filteredData);
+  //   // setFilteredData([...filteredData].filter((item) => matchesFilterCont(item, new_type)));
+  //   setSortedData([...filteredData].filter((item) => matchesFilterCont(item, new_type)));
+  // };
   
-  const matchesFilterCont = (item, updatedType) => {
+  const matchesFilterCont = (item, updatedType2) => {
     // all items should be shown when no filter is selected
 
-    if(updatedType == "All") { 
+    if(updatedType2 == "All") { 
       return true
     } 
-    else if (updatedType == item.continent) {
+    else if (updatedType2 == item.continent) {
       return true
     } 
     else {
@@ -133,30 +185,30 @@ function App() {
               <label className="Labels">
                 <h3>Package Deals</h3>
                 <div>
-                  <input type="radio" value="All-Inclusive" name="filter" onChange={handleFilterPackage}/> All-Inclusive
+                  <input type="radio" value="All-Inclusive" name="filter" onChange={handleFilter}/> All-Inclusive
                 </div>
                 <div>
-                  <input type="radio" value="Tours and Activities Bundle" name="filter" onChange={handleFilterPackage}/> Tours and Activities Bundle
+                  <input type="radio" value="Tours and Activities Bundle" name="filter" onChange={handleFilter}/> Tours and Activities Bundle
                 </div>
                 <div>
-                  <input type="radio" value="Timeshare Promotion" name="filter"  onChange={handleFilterPackage}/> Timeshare Promotion
+                  <input type="radio" value="Timeshare Promotion" name="filter"  onChange={handleFilter}/> Timeshare Promotion
                 </div>
               
                 <h3>Continent</h3>
                 <div>
-                  <input type="radio" value="Africa" name="filter2" onChange={handleFilterCont}/> Africa
+                  <input type="radio" value="Africa" name="filter2" onChange={handleFilter}/> Africa
                 </div>
                 <div>
-                  <input type="radio" value="Asia" name="filter2" onChange={handleFilterCont}/> Asia
+                  <input type="radio" value="Asia" name="filter2" onChange={handleFilter}/> Asia
                 </div>
                 <div>
-                  <input type="radio" value="Europe" name="filter2" onChange={handleFilterCont}/> Europe
+                  <input type="radio" value="Europe" name="filter2" onChange={handleFilter}/> Europe
                 </div>
                 <div>
-                  <input type="radio" value="North America" name="filter2" onChange={handleFilterCont}/> North America
+                  <input type="radio" value="North America" name="filter2" onChange={handleFilter}/> North America
                 </div>
                 <div>
-                  <input type="radio" value="South America" name="filter2" onChange={handleFilterCont}/> South America
+                  <input type="radio" value="South America" name="filter2" onChange={handleFilter}/> South America
                 </div>
               </label>
 
