@@ -3,7 +3,8 @@ import { useState, useEffect } from "react";
 import travelData from "./assets/travel-data.json";
 import TravelItem from "./components/TravelItem";
 
-travelData.forEach((item) => {
+
+travelData.forEach((item) => { // displays images for each item
   item.image = process.env.PUBLIC_URL + "/" + item.image;
 });
 
@@ -32,7 +33,6 @@ function App() {
   }
 
   // Sorting 
-
   const [sortedData, setSortedData] = useState([...travelItems]);
 
   function setOrderPrice() {
@@ -64,9 +64,6 @@ function App() {
 
       data = filteredData2.filter((item) => matchesFilterPackage(item, new_type));
       setFilteredData(filteredData2.filter((item) => matchesFilterPackage(item, new_type)));
-      // console.log("Package Filter:");
-      // console.log(filteredData);
-      
       setSortedData(filteredData2.filter((item) => matchesFilterPackage(item, new_type)));
     }
     else if(filter == "filter2") { // continent
@@ -75,12 +72,10 @@ function App() {
 
       data = filteredData.filter((item) => matchesFilterCont(item, new_type));
       setFilteredData2(filteredData.filter((item) => matchesFilterCont(item, new_type)));
-      // console.log("Continent Filter:");
-      // console.log(filteredData2);
       setSortedData(filteredData.filter((item) => matchesFilterCont(item, new_type)));
     }
     
-    setTravelItems(data);
+    setTravelItems(data); // combines package and continent filters
   }
   
   const matchesFilterPackage = (item, updatedType) => {
