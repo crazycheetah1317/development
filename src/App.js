@@ -36,21 +36,15 @@ function App() {
   const [sortedData, setSortedData] = useState([...travelItems]);
 
   function setOrderPrice() {
-    // const copy = [...travelItems];
-    // const sortedData = copy.sort((a, b) => a.price - b.price);
     sortedData.sort((a, b) => a.price - b.price);
     setSortedData([...sortedData]);
     setTravelItems(sortedData);
-    // console.log(travelItems);
   }
 
   function setOrderPeople() {
-    // const copy = [...travelItems];
-    // const sortedData = copy.sort((a, b) => a.people - b.people);
     sortedData.sort((a, b) => a.people - b.people)
     setSortedData([...sortedData]);
     setTravelItems(sortedData);
-    // console.log(sortedData);
   }
 
   // Filtering
@@ -69,11 +63,9 @@ function App() {
       setPackageType(new_type, matchesFilterPackage);
 
       data = filteredData2.filter((item) => matchesFilterPackage(item, new_type));
-      // console.log("Package Filter:");
-      // console.log(filteredData2.filter((item) => matchesFilterPackage(item, new_type)))
       setFilteredData(filteredData2.filter((item) => matchesFilterPackage(item, new_type)));
-      console.log("Package Filter:");
-      console.log(filteredData);
+      // console.log("Package Filter:");
+      // console.log(filteredData);
       
       setSortedData(filteredData2.filter((item) => matchesFilterPackage(item, new_type)));
     }
@@ -82,46 +74,15 @@ function App() {
       setContType(new_type, matchesFilterCont);
 
       data = filteredData.filter((item) => matchesFilterCont(item, new_type));
-      // console.log("Continent Filter:");
-      // console.log(filteredData.filter((item) => matchesFilterCont(item, new_type)));
       setFilteredData2(filteredData.filter((item) => matchesFilterCont(item, new_type)));
-      console.log("Continent Filter:");
-      console.log(filteredData2);
-
+      // console.log("Continent Filter:");
+      // console.log(filteredData2);
       setSortedData(filteredData.filter((item) => matchesFilterCont(item, new_type)));
     }
     
     setTravelItems(data);
-
-    // setFilteredData(filteredData.filter((item) => matchesFilterPackage(item, new_type)));
-    // setFilteredData([...filteredData].filter((item) => matchesFilterCont(item, new_type)));
-
-    // console.log(travelItems);
-    // setTravelItems(travelItems);
-    // setTravelItems([...filteredData].filter((item) => matchesFilterCont(item, new_type)));
-
   }
-
-  // function display(data) {
-  //   data = data.filter((item) => matchesFilterPackage(item));
-  //   data = data.filter((item) => matchesFilterCont(item))
-  // }
   
-
-
-  // function handleFilterPackage(event) { // value is All Inclusive, Africa, Asia, etc
-  //   var new_type = event.target.value;
-
-  //   setType(new_type, matchesFilterPackage);
-
-  //   setTravelItems(filteredData.filter((item) => matchesFilterPackage(item, new_type)));
-  //   // setFilteredData(filteredData.filter((item) => matchesFilterPackage(item, new_type)));
-  //   console.log(filteredData);
-  //   setSortedData(filteredData.filter((item) => matchesFilterPackage(item, new_type)));
-
-  // };
-  
-
   const matchesFilterPackage = (item, updatedType) => {
     // all items should be shown when no filter is selected
     if(updatedType == "All") { 
@@ -134,21 +95,9 @@ function App() {
       return false
     }
   }
-
-  // function handleFilterCont(event){ // value is All Inclusive, Africa, Asia, etc
-  //   var new_type = event.target.value
-  //   setType(new_type, matchesFilterCont);
-
-  //   console.log(filteredData);
-  //   setTravelItems([...filteredData].filter((item) => matchesFilterCont(item, new_type)));
-  //   console.log(filteredData);
-  //   // setFilteredData([...filteredData].filter((item) => matchesFilterCont(item, new_type)));
-  //   setSortedData([...filteredData].filter((item) => matchesFilterCont(item, new_type)));
-  // };
   
   const matchesFilterCont = (item, updatedType2) => {
     // all items should be shown when no filter is selected
-
     if(updatedType2 == "All") { 
       return true
     } 
@@ -229,11 +178,8 @@ function App() {
                   setCartItems={setCartItems} cartItems={cartItems}/>
                 ))}   
           </div>
-
         </div>
-
       </div>
-
     </div>
   );
 }
